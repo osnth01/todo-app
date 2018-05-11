@@ -9,9 +9,11 @@ const setup = () => {
   return output
 }
 
-describe('App', () => {
-  it('should say "To Do"', () => {
-    const output = setup()
-    expect(output.props.children).toEqual('To Do')
+describe('components', () => {
+  describe('App', () => {
+    it('should say "To Do"', () => {
+      const output = setup()
+      expect(output.props.children).toEqual('To Do')
+    })
   })
 })
