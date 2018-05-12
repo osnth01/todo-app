@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Component } from 'react'
 import TodoList from './TodoList'
+import TodoInput from './TodoInput'
 import TodoType from './types/Todo'
 
 type AppState = {
@@ -26,6 +27,7 @@ class App extends Component<object, AppState> {
   render() {
     return (
       <>
+        <TodoInput />
         <TodoList todos={this.state.todos} />
       </>
     )
