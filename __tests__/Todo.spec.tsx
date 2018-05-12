@@ -4,12 +4,14 @@ import Todo from '../src/Todo'
 import TodoType from '../src/types/Todo'
 
 const setup = (todo: TodoType) => {
-  const props = todo
+  const props = {
+    todo
+  }
 
   const renderer = createRenderer()
 
   renderer.render(
-    <Todo todo={todo.todo}/>
+    <Todo {...props} />
   )
 
   let output = renderer.getRenderOutput()

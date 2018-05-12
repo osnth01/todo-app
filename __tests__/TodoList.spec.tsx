@@ -35,7 +35,6 @@ describe('components', () => {
       ]
       const { output } = setup(todos)
 
-      console.log(output)
       expect(output.props.children.length).toBe(todos.length)
     })
   })
