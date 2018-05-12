@@ -27,11 +27,13 @@ class App extends Component<object, AppState> {
   render() {
     return (
       <>
-        <TodoInput />
+        <TodoInput onClick={this.onClick} />
         <TodoList todos={this.state.todos} />
       </>
     )
   }
+
+  private onClick = () => function() {}
 }
 
 export default App
