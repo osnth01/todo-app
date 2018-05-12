@@ -1,8 +1,9 @@
 import * as React from 'react'
+import { SFC } from 'react'
 
-type Props = {
-  text: string
+type TodoProp = {
+  todo: string
 }
-const Todo = ({text}: Props) => <div>{text}</div>
+const Todo: SFC<TodoProp> = ({todo}) => <div>{todo}</div>
 
 export default Todo
