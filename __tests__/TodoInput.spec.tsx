@@ -3,16 +3,21 @@ import { createRenderer } from 'react-test-renderer/shallow'
 import TodoInput from '../src/TodoInput'
 
 const setup = () => {
+  let props = {
+    onClick: jest.fn()
+  }
   const renderer = createRenderer()
 
   renderer.render(
-    <TodoInput />
+    <TodoInput onClick={props.onClick}/>
   )
 
   let output = renderer.getRenderOutput()
-  let [ input, , button ] = output.props.children
+  console.log(output)
+  let [ input, button ] = output.props.children
 
   return {
+    props,
     output,
     input,
     button
@@ -31,6 +36,13 @@ describe('components', () => {
       const { button } = setup()
 
       expect(button.type).toBe('button')
+    })
+
+    it('should trigger `onClick` when button is pressed', () => {
+      const { button, props } = setup()
+
+      button.props.onClick()
+      expect(props.onClick).toHaveBeenCalled()
     })
   })
 })

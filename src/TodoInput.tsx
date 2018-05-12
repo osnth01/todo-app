@@ -1,8 +1,15 @@
 import * as React from 'react'
+import { MouseEvent, SFC } from 'react'
 
-const TodoInput = () => (
+type TodoInputType = {
+  onClick(e: MouseEvent<HTMLElement>): void
+}
+const TodoInput: SFC<TodoInputType> = ({ onClick: handleClick }) => (
   <div>
-    <input type="text"></input> <button>Submit</button>
+    <input type="text"></input>
+    <button onClick={handleClick}>
+      Submit
+    </button>
   </div>
 )
 
