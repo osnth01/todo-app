@@ -33,7 +33,17 @@ class App extends Component<object, AppState> {
     )
   }
 
-  private onClick = () => function() {}
+  private onClick = (newTodo: string) => {
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: this.state.todos.length + 1,
+          todo: newTodo
+        }
+      ]
+    })
+  }
 }
 
 export default App

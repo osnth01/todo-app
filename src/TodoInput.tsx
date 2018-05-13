@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Component, MouseEvent, ChangeEvent } from 'react'
 
 type TodoInputProps = {
-  onClick(e: MouseEvent<HTMLElement>): void
+  onClick(newTodo: string): void
 }
 
 const initialState = { newTodo: '' }
@@ -18,8 +18,8 @@ class TodoInput extends Component<TodoInputProps, TodoInputState> {
         <input
           type="text"
           value={this.state.newTodo}
-          onChange={this.onChange.bind(this)}/>
-        <button onClick={onClick}>
+          onChange={this.onChange.bind(this)} />
+        <button onClick={this.onButtonClick.bind(this)}>
           Submit
         </button>
       </div>
@@ -30,6 +30,15 @@ class TodoInput extends Component<TodoInputProps, TodoInputState> {
     this.setState({
       newTodo: e.target.value
     })
+  }
+
+  private onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+    if (this.state.newTodo) {
+      this.props.onClick(this.state.newTodo)
+      this.setState({
+        newTodo: ''
+      })
+    }
   }
 }
 
