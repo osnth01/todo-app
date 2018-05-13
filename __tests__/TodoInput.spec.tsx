@@ -13,7 +13,7 @@ const setup = () => {
   )
 
   let output = renderer.getRenderOutput()
-  console.log(output)
+
   let [ input, button ] = output.props.children
 
   return {

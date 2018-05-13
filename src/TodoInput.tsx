@@ -1,16 +1,28 @@
 import * as React from 'react'
-import { MouseEvent, SFC } from 'react'
+import {  } from 'react'
+import { Component, MouseEvent, SFC } from 'react'
 
-type TodoInputType = {
+type TodoInputProps = {
   onClick(e: MouseEvent<HTMLElement>): void
 }
-const TodoInput: SFC<TodoInputType> = ({ onClick: handleClick }) => (
-  <div>
-    <input type="text"></input>
-    <button onClick={handleClick}>
-      Submit
-    </button>
-  </div>
-)
+
+const initialState = { newTodo: '' }
+type TodoInputState = Readonly<typeof initialState>
+
+class TodoInput extends Component<TodoInputProps, TodoInputState> {
+  readonly state: TodoInputState = initialState
+
+  render() {
+    const { onClick } = this.props
+    return (
+      <div>
+        <input type="text" value={this.state.newTodo} />
+        <button onClick={onClick}>
+          Submit
+        </button>
+      </div>
+    )
+  }
+}
 
 export default TodoInput
