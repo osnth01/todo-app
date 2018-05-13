@@ -1,5 +1,4 @@
 import * as React from 'react'
-import {  } from 'react'
 import { Component, MouseEvent, SFC } from 'react'
 
 type TodoInputProps = {
