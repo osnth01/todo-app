@@ -54,14 +54,12 @@ class App extends Component<object, AppState> {
   private onTodoClick = (todoId: number) => {
     this.setState({
       todos: this.state.todos.map(todo => {
-        if (todo.id === todoId) {
-          return {
-            id: todo.id,
-            todo: todo.todo,
+        return todo.id === todoId ?
+          {
+            ...todo,
             completed: !todo.completed
-          }
-        }
-        return todo
+          } :
+          todo
       })
     })
   }
