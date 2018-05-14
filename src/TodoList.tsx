@@ -4,12 +4,13 @@ import Todo from './Todo'
 import TodoType from './types/Todo'
 
 type TodoListProp = {
-  todos: TodoType[]
+  todos: TodoType[],
+  onTodoClick(todoId: number): void
 }
-const TodoList: SFC<TodoListProp> = ({todos}) => (
+const TodoList: SFC<TodoListProp> = ({todos, onTodoClick}) => (
   <div>
     {
-      todos.map(todo => <Todo key={todo.id} todo={todo} />)
+      todos.map(todo => <Todo key={todo.id} todo={todo} onClick={onTodoClick}/>)
     }
   </div>
 )

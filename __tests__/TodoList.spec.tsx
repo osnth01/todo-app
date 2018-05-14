@@ -4,12 +4,15 @@ import TodoList from '../src/TodoList'
 import TodoType from '../src/types/Todo'
 
 const setup = (todos: TodoType[]) => {
-  const props = todos
+  const props = {
+    todos,
+    onTodoClick: jest.fn()
+  }
 
   const renderer = createRenderer()
 
   renderer.render(
-    <TodoList todos={todos} />
+    <TodoList {...props} />
   )
 
   let output = renderer.getRenderOutput()
@@ -26,11 +29,13 @@ describe('components', () => {
       const todos: TodoType[] = [
         {
           id: 1,
-          todo: 'Learn React'
+          todo: 'Learn React',
+          completed: false
         },
         {
           id: 2,
-          todo: 'Exercise'
+          todo: 'Exercise',
+          completed: false
         }
       ]
       const { output } = setup(todos)

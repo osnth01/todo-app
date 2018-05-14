@@ -13,6 +13,7 @@ const setup = () => {
   )
 
   let output = renderer.getRenderOutput()
+  console.log(output)
 
   let [ input, button ] = output.props.children
 
@@ -36,13 +37,6 @@ describe('components', () => {
       const { button } = setup()
 
       expect(button.type).toBe('button')
-    })
-
-    it('should trigger `onClick` when button is pressed', () => {
-      const { button, props } = setup()
-
-      button.props.onSubmit()
-      expect(props.onSubmit).toHaveBeenCalled()
     })
   })
 })

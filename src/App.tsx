@@ -12,11 +12,13 @@ const initialState: AppState = {
   todos: [
     {
       id: 1,
-      todo: 'Learn React'
+      todo: 'Learn React',
+      completed: false
     },
     {
       id: 2,
-      todo: 'Exercise'
+      todo: 'Exercise',
+      completed: false
     }
   ]
 }
@@ -28,7 +30,10 @@ class App extends Component<object, AppState> {
     return (
       <>
         <TodoInput onSubmit={this.onSubmit} />
-        <TodoList todos={this.state.todos} />
+        <TodoList
+          todos={this.state.todos}
+          onTodoClick={this.onTodoClick}
+        />
       </>
     )
   }
@@ -39,9 +44,25 @@ class App extends Component<object, AppState> {
         ...this.state.todos,
         {
           id: this.state.todos.length + 1,
-          todo: newTodo
+          todo: newTodo,
+          completed: false
         }
       ]
+    })
+  }
+
+  private onTodoClick = (todoId: number) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === todoId) {
+          return {
+            id: todo.id,
+            todo: todo.todo,
+            completed: !todo.completed
+          }
+        }
+        return todo
+      })
     })
   }
 }
