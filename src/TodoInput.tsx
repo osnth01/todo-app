@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Component, MouseEvent, ChangeEvent } from 'react'
+import { Component, FormEvent, ChangeEvent } from 'react'
 
 type TodoInputProps = {
-  onClick(newTodo: string): void
+  onSubmit(newTodo: string): void
 }
 
 const initialState = { newTodo: '' }
@@ -12,17 +12,17 @@ class TodoInput extends Component<TodoInputProps, TodoInputState> {
   readonly state: TodoInputState = initialState
 
   render() {
-    const { onClick } = this.props
+    const { onSubmit } = this.props
     return (
-      <div>
+      <form onSubmit={this.onFormSubmit.bind(this)}>
         <input
           type="text"
           value={this.state.newTodo}
           onChange={this.onChange.bind(this)} />
-        <button onClick={this.onButtonClick.bind(this)}>
+        <button type="submit">
           Submit
         </button>
-      </div>
+      </form>
     )
   }
 
@@ -32,9 +32,10 @@ class TodoInput extends Component<TodoInputProps, TodoInputState> {
     })
   }
 
-  private onButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+  private onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     if (this.state.newTodo) {
-      this.props.onClick(this.state.newTodo)
+      this.props.onSubmit(this.state.newTodo)
       this.setState({
         newTodo: ''
       })

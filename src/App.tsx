@@ -27,13 +27,13 @@ class App extends Component<object, AppState> {
   render() {
     return (
       <>
-        <TodoInput onClick={this.onClick} />
+        <TodoInput onSubmit={this.onSubmit} />
         <TodoList todos={this.state.todos} />
       </>
     )
   }
 
-  private onClick = (newTodo: string) => {
+  private onSubmit = (newTodo: string) => {
     this.setState({
       todos: [
         ...this.state.todos,

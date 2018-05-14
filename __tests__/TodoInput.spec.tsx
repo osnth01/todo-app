@@ -4,12 +4,12 @@ import TodoInput from '../src/TodoInput'
 
 const setup = () => {
   let props = {
-    onClick: jest.fn()
+    onSubmit: jest.fn()
   }
   const renderer = createRenderer()
 
   renderer.render(
-    <TodoInput onClick={props.onClick}/>
+    <TodoInput onSubmit={props.onSubmit}/>
   )
 
   let output = renderer.getRenderOutput()
@@ -41,8 +41,8 @@ describe('components', () => {
     it('should trigger `onClick` when button is pressed', () => {
       const { button, props } = setup()
 
-      button.props.onClick()
-      expect(props.onClick).toHaveBeenCalled()
+      button.props.onSubmit()
+      expect(props.onSubmit).toHaveBeenCalled()
     })
   })
 })
